@@ -38,7 +38,8 @@ const nextConfig = {
  fichier : .ssh/id_rsa.pub
 - cloner son projet
 ```
- git clone git@github.com:mangeot/nextjstest.git
+ git clone git@github.com:login/monprojetnextjs.git
+ cd monprojetnextjs
 ```
 
 - installer l'appli avec la commande suivante
@@ -59,19 +60,19 @@ puis arrêter l'appli avec control+C
 
 - relancer l'appli avec la commande suivante 
 ```
- BASE_PATH=/mangeot pm2 start npm --name="nextjs-mangeot" -- start
+ BASE_PATH=/mangeot pm2 start npm --name="nextjs-login" -- start
 ```
 
 - Puis quand l'appli tourne déjà, relancer l'appli avec la commande suivante 
 ```
- BASE_PATH=/mangeot pm2 restart --name="nextjs-mangeot"
+ pm2 restart nextjs-login
 ```
 
 ## pipeline github
 - ajouter un script de déploiement dans scripts/deploy.sh
 ```
 BASE_PATH=/mangeot npm run build
-BASE_PATH=/mangeot pm2 restart --name="nextjs-mangeot"
+BASE_PATH=/mangeot pm2 restart nextjs-login
 ```
 chmod 755 deploy.sh
 
