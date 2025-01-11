@@ -41,6 +41,11 @@ const nextConfig = {
  git clone git@github.com:mangeot/nextjstest.git
 ```
 
+- installer l'appli avec la commande suivante
+```
+ npm install
+```
+
 - compiler l'appli avec la commande suivante
 ```
  BASE_PATH=/mangeot npm run build
