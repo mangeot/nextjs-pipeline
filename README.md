@@ -51,14 +51,20 @@ const nextConfig = {
  BASE_PATH=/mangeot npm run build
 ```
 
-- lancer l'appli avec la commande suivante 
+- lancer une première fois l'appli avec la commande suivante
 ```
- pm2 npm start --name="nextjs-mangeot"
+ BASE_PATH=/mangeot npm run start
 ```
+puis arrêter l'appli avec control+C
 
 - relancer l'appli avec la commande suivante 
 ```
- pm2 npm restart --name="nextjs-mangeot"
+ BASE_PATH=/mangeot pm2 start npm --name="nextjs-mangeot" -- start
+```
+
+- Puis quand l'appli tourne déjà, relancer l'appli avec la commande suivante 
+```
+ BASE_PATH=/mangeot pm2 restart --name="nextjs-mangeot"
 ```
 
 ## pipeline github
