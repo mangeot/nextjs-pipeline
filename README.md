@@ -71,7 +71,7 @@ puis arrêter l'appli avec control+C
 - ajouter un script de déploiement dans scripts/deploy.sh
 ```
 BASE_PATH=/mangeot npm run build
-BASE_PATH=/mangeot pm2 npm restart --name="nextjs-mangeot"
+BASE_PATH=/mangeot pm2 restart --name="nextjs-mangeot"
 ```
 chmod 755 deploy.sh
 
