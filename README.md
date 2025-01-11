@@ -68,7 +68,14 @@ puis arrêter l'appli avec control+C
 ```
 
 ## pipeline github
-- add a github action
+- ajouter un script de déploiement dans scripts/deploy.sh
+```
+BASE_PATH=/mangeot npm run build
+BASE_PATH=/mangeot pm2 npm restart --name="nextjs-mangeot"
+```
+chmod 755 deploy.sh
+
+- ajouter une action github
 ```
  name: Deploy to Server
 
@@ -90,12 +97,21 @@ jobs:
 
       - name: SSH into Server and Deploy
         run: |
-          ssh -o StrictHostKeyChecking=no ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} \
+          ssh -o StrictHostKeyChecking=no -p ${{ secrets.SSH_PORT }} ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} \
           "cd ${{ secrets.WORK_DIR }} && \
           git fetch origin main && \
           git reset --hard origin/main && \
           ./scripts/deploy.sh"
 ```
+
+- ajouter tous les secrets d'environnement pour le repository
+````
+SSH_HOST=xxxx
+SSH_PORT=yyyy
+SSH_USER=login
+WORK_DIR=/home/login/nextjs-pipeline
+SSH_PRIVATE_KEY= le fichier id_rsa dans votre .ssh
+````
 
 
 ## Getting Started
