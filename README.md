@@ -69,12 +69,20 @@ puis arrêter l'appli avec control+C
 ```
 
 ## pipeline github
+
+- Générer une nouvelle clé :
+ssh-kenygen -f ~/.ssh/github
+- Ajouter la clé publique générée à authorized_keys
+cat ~/.ssh/github.pub >> ~/.ssh/authorized_keys
+cp ~/.ssh/github.pub ~/.ssh/authorized_keys
+
+
 - ajouter un script de déploiement dans scripts/deploy.sh
 ```
 BASE_PATH=/mangeot npm run build
 BASE_PATH=/mangeot pm2 restart nextjs-login
 ```
-chmod 755 deploy.sh
+chmod 755 scripts/deploy.sh
 
 - ajouter une action github
 ```
@@ -112,7 +120,8 @@ SSH_PORT=yyyy
 SSH_USER=login
 WORK_DIR=/home/login/nextjs-pipeline
 SSH_PRIVATE_KEY= le fichier id_rsa dans votre .ssh
-````
+```
+
 
 
 ## Getting Started
